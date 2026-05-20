@@ -1,0 +1,27 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" rx="32" fill="#0B1220"/>
+  <circle cx="664" cy="112" r="68" fill="#1D4ED8" opacity="0.18"/>
+  <circle cx="132" cy="494" r="84" fill="#22C55E" opacity="0.16"/>
+  <rect x="136" y="144" width="528" height="324" rx="28" fill="#111827" stroke="#334155" stroke-width="4"/>
+  <rect x="176" y="186" width="448" height="242" rx="20" fill="#0F172A"/>
+  <path d="M251 314L400 204L549 314V435H456V356H344V435H251V314Z" fill="#1E293B" stroke="#60A5FA" stroke-width="8" stroke-linejoin="round"/>
+  <rect x="370" y="256" width="60" height="60" rx="10" fill="#0B1220" stroke="#38BDF8" stroke-width="6"/>
+  <circle cx="400" cy="286" r="12" fill="#38BDF8"/>
+  <path d="M400 102C356.922 102 322 136.922 322 180V220H478V180C478 136.922 443.078 102 400 102Z" fill="#1D4ED8" opacity="0.24"/>
+  <path d="M400 90L468 124V192C468 245.019 439.58 294.256 394 320C348.42 294.256 320 245.019 320 192V124L400 90Z" fill="#0F172A" stroke="#22C55E" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M367 191L389 213L433 169" stroke="#22C55E" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="205" cy="225" r="20" fill="#38BDF8"/>
+  <circle cx="596" cy="225" r="20" fill="#38BDF8"/>
+  <circle cx="205" cy="382" r="20" fill="#38BDF8"/>
+  <circle cx="596" cy="382" r="20" fill="#38BDF8"/>
+  <path d="M225 225H316" stroke="#38BDF8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M484 225H576" stroke="#38BDF8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M225 382H316" stroke="#38BDF8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M484 382H576" stroke="#38BDF8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M205 245V362" stroke="#38BDF8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M596 245V362" stroke="#38BDF8" stroke-width="6" stroke-linecap="round"/>
+  <rect x="82" y="72" width="196" height="76" rx="18" fill="#111827" stroke="#334155" stroke-width="4"/>
+  <text x="110" y="118" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="28" font-weight="700">IoT + Web</text>
+  <rect x="530" y="468" width="184" height="64" rx="18" fill="#111827" stroke="#334155" stroke-width="4"/>
+  <text x="560" y="508" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="24" font-weight="700">Seguranca</text>
+</svg>
