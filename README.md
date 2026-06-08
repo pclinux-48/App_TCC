@@ -1,70 +1,81 @@
-# Projeto de TCC - Landing Page de Apresentacao
+# Projeto de TCC - Componente React com TypeScript e Bootstrap
 
 ## Tema do TCC
 
-**POPULARIZACAO DA AUTOMACAO RESIDENCIAL: Desenvolvimento de um Sistema de Monitoramento e Intrusao residencial baseado em IoT e Protocolos Web**
+**POPULARIZACAO DA AUTOMACAO RESIDENCIAL: Desenvolvimento de um Sistema de Monitoramento e Intrusao Residencial baseado em IoT e Protocolos Web**
 
 ## Sobre o projeto
 
-Este projeto consiste em uma pagina web responsiva desenvolvida como atividade avaliativa, com o objetivo de apresentar o TCC de forma visual, organizada e profissional.
+Este projeto foi desenvolvido como atividade pratica da disciplina, com foco na criacao de um componente funcional em React, usando TypeScript, JSX e Bootstrap.
 
-A proposta da pagina e funcionar como uma **Landing Page** do projeto, podendo ser utilizada futuramente para:
+A aplicacao apresenta uma interface inspirada no tema do TCC e demonstra uma parte real do sistema: um painel inicial com cards reutilizaveis para modulos do projeto, como IoT, backend e frontend.
 
-- divulgacao do TCC;
-- apresentacao para banca;
-- composicao de portfolio academico e profissional.
+## Objetivo da atividade
+
+Atender aos requisitos solicitados no enunciado:
+
+- usar React com TypeScript;
+- criar um componente funcional original relacionado ao TCC;
+- utilizar JSX para estruturar a interface;
+- aplicar props reutilizaveis e tipadas com interface TypeScript;
+- usar Bootstrap para layout e estilizacao;
+- empregar renderizacao condicional de forma relevante;
+- criar o `App.tsx` como ponto de entrada visual do projeto.
 
 ## O que foi desenvolvido
 
-A aplicacao foi montada com foco nos conceitos solicitados na atividade:
+O projeto atual contem:
 
-- layout responsivo com Bootstrap;
-- estrutura organizada em secoes;
-- uso de TypeScript para funcionalidades dinamicas;
-- visual moderno com possibilidade de reutilizacao futura.
+- uma pagina principal em React com layout responsivo;
+- um componente reutilizavel de card para exibir modulos do sistema;
+- filtro por categoria para reutilizar o mesmo componente em diferentes contextos;
+- alternancia entre tema claro e escuro;
+- exibicao da data atual formatada;
+- calculo dos dias restantes ate a entrega prevista do TCC;
+- rodape com identificacao do aluno.
 
-### Estrutura da pagina
+## Componente principal
 
-A pagina contem:
+O componente criado foi o `TccFeatureCard`, pensado para representar areas do sistema do TCC.
 
-- **Navbar** com links para as secoes principais;
-- **secao de apresentacao do projeto** com titulo, subtitulo, descricao e imagem ilustrativa;
-- **secao de cards** usando grid do Bootstrap;
-- **secao de tecnologias** utilizadas no contexto do projeto;
-- **rodape** com informacoes pessoais e links profissionais.
+Esse componente recebe props tipadas para:
 
-## Funcionalidades implementadas com TypeScript
+- categoria;
+- titulo;
+- descricao;
+- lista de detalhes;
+- destaque visual opcional;
+- mensagem de alerta opcional;
+- exibicao condicional dos detalhes.
 
-Foram implementadas funcionalidades reais utilizando tipagem, funcoes e manipulacao de elementos da pagina:
+### Exemplo de comportamento
 
-- **filtro de cards por categoria**:
-  - todos;
-  - IoT;
-  - Backend;
-  - Frontend.
-- **alternancia de tema claro/escuro**;
-- **exibicao da data atual formatada**;
-- **contador de dias restantes** ate a data prevista de entrega do TCC.
+- quando `isHighlighted` esta ativo, o card mostra a badge `Destaque`;
+- quando `alertMessage` existe, o card mostra um alerta em Bootstrap;
+- quando `showDetails` e `false`, o card troca a lista por uma mensagem condicional em JSX.
 
-## Tecnologias e aplicacoes utilizadas
+## Funcionalidades implementadas
 
-As principais tecnologias utilizadas nesta aplicacao foram:
+Foram aplicados conceitos praticos com React e TypeScript:
 
-- **HTML5**: estrutura da pagina;
-- **CSS3**: personalizacao visual complementar;
-- **Bootstrap 5.3.8**: layout responsivo, navbar, grid, cards, botoes e componentes visuais;
-- **TypeScript 6**: logica da aplicacao com tipagem estatica;
-- **Vite 8**: ferramenta para desenvolvimento local e build do projeto;
-- **Node.js + npm**: gerenciamento de dependencias e execucao dos scripts;
-- **GitHub**: hospedagem do codigo-fonte em repositorio publico.
+- `useState` para categoria, tema e data atual;
+- `useEffect` para atualizar a data e persistir o tema;
+- `useMemo` para filtrar os cards exibidos;
+- `calculateRemainingDays()` para calcular os dias restantes ate a data final;
+- `formatFullDate()` para exibir a data atual formatada;
+- renderizacao condicional no componente de card.
 
-## Bibliotecas utilizadas
+## Tecnologias utilizadas
 
-Dependencias principais do projeto:
+As principais tecnologias e bibliotecas do projeto sao:
 
-- `bootstrap`
-- `typescript`
-- `vite`
+- **React 19**;
+- **React DOM 19**;
+- **TypeScript 6**;
+- **Bootstrap 5.3.8**;
+- **Vite 8**;
+- **CSS3** para estilos complementares;
+- **Node.js + npm** para execucao e dependencias.
 
 ## Como executar o projeto
 
@@ -80,13 +91,13 @@ npm install
 npm run dev
 ```
 
-Depois, acesse no navegador:
+Depois, acesse:
 
 ```text
 http://localhost:5173/
 ```
 
-### 3. Gerar a versao final para producao
+### 3. Gerar a build de producao
 
 ```bash
 npm run build
@@ -100,28 +111,33 @@ npm run preview
 
 ## Scripts disponiveis
 
-- `npm run dev`: inicia o servidor local de desenvolvimento;
-- `npm run build`: compila o TypeScript e gera a build de producao;
-- `npm run preview`: abre a versao gerada em modo de visualizacao.
+- `npm run dev`: inicia o servidor local com Vite;
+- `npm run build`: compila o TypeScript e gera a build;
+- `npm run preview`: abre a versao final gerada.
 
-## Organizacao do projeto
+## Estrutura do projeto
 
 Principais arquivos:
 
 - `index.html`: estrutura base da aplicacao;
-- `src/main.ts`: conteudo da pagina e logica em TypeScript;
+- `src/main.tsx`: ponto de entrada com `ReactDOM.createRoot`;
+- `src/App.tsx`: estrutura principal da pagina em React;
+- `src/components/TccFeatureCard.tsx`: componente reutilizavel com props tipadas;
 - `src/style.css`: estilos personalizados;
-- `src/assets/tcc-smart-home.svg`: imagem ilustrativa da pagina;
-- `package.json`: configuracoes e dependencias do projeto.
+- `src/assets/tcc-smart-home.svg`: imagem principal da interface;
+- `vite.config.ts`: configuracao do Vite com plugin React;
+- `package.json`: dependencias e scripts do projeto.
 
-## Observacoes importantes
+## Validacao
 
-- O projeto **nao utiliza React, Angular ou Vue**, conforme solicitado na atividade.
-- O foco foi manter a aplicacao simples, responsiva, visualmente organizada e alinhada aos requisitos da disciplina.
-- Alguns dados no rodape, como **curso** e **e-mail**, podem ser ajustados com as informacoes finais do aluno.
+O projeto foi validado com:
+
+- execucao em ambiente local com `npm run dev`;
+- build de producao com `npm run build`.
 
 ## Autor
 
-- **Paulo Cesar**
+- **Paulo Cesar Pereira**
+- **Pos-graduando em Desenvolvimento Web & Mobile**
 - GitHub: [pclinux-48](https://github.com/pclinux-48)
 - LinkedIn: [paulocesarper](https://www.linkedin.com/in/paulocesarper/)
