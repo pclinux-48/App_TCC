@@ -40,7 +40,7 @@ export function TccFeatureCard({
           </ul>
         ) : (
           <p className="small text-secondary mb-0">
-            Mais detalhes deste modulo ainda serao definidos nas proximas etapas do TCC.
+            Mais detalhes deste módulo ainda serão definidos nas próximas etapas do TCC.
           </p>
         )}
       </div>

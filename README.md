@@ -1,4 +1,4 @@
-# Projeto de TCC - Componente React com TypeScript e Bootstrap
+# Projeto de TCC - Catalogo Dinamico com Busca e Gerenciamento de Estado
 
 ## Tema do TCC
 
@@ -6,64 +6,67 @@
 
 ## Sobre o projeto
 
-Este projeto foi desenvolvido como atividade pratica da disciplina, com foco na criacao de um componente funcional em React, usando TypeScript, JSX e Bootstrap.
+Este projeto foi atualizado como atividade pratica da disciplina, com foco na criacao de um catalogo interativo em React, usando TypeScript, JSX, Bootstrap e gerenciamento de estado com `useState`.
 
-A aplicacao apresenta uma interface inspirada no tema do TCC e demonstra uma parte real do sistema: um painel inicial com cards reutilizaveis para modulos do projeto, como IoT, backend e frontend.
+A aplicacao apresenta uma interface inspirada no tema do TCC e demonstra uma funcionalidade central do sistema: um inventario dinamico de sensores, cameras, alarmes e gateways para monitoramento residencial.
 
 ## Objetivo da atividade
 
 Atender aos requisitos solicitados no enunciado:
 
 - usar React com TypeScript;
-- criar um componente funcional original relacionado ao TCC;
-- utilizar JSX para estruturar a interface;
-- aplicar props reutilizaveis e tipadas com interface TypeScript;
-- usar Bootstrap para layout e estilizacao;
-- empregar renderizacao condicional de forma relevante;
-- criar o `App.tsx` como ponto de entrada visual do projeto.
+- renderizar dinamicamente uma lista com `map()`;
+- utilizar `key` unica e estavel para cada item;
+- aplicar `useState` para gerenciar os itens e o termo de busca;
+- permitir busca em tempo real;
+- permitir a adicao de novos itens ao catalogo;
+- manter a interface alinhada ao contexto do TCC com Bootstrap.
 
 ## O que foi desenvolvido
 
 O projeto atual contem:
 
 - uma pagina principal em React com layout responsivo;
-- um componente reutilizavel de card para exibir modulos do sistema;
-- filtro por categoria para reutilizar o mesmo componente em diferentes contextos;
+- um catalogo dinamico de dispositivos de monitoramento;
+- um formulario para adicionar novos itens ao inventario;
+- busca em tempo real por nome, categoria, localizacao ou status;
+- renderizacao de lista com `map()` e `key` unica;
 - alternancia entre tema claro e escuro;
 - exibicao da data atual formatada;
 - calculo dos dias restantes ate a entrega prevista do TCC;
 - rodape com identificacao do aluno.
 
-## Componente principal
+## Catalogo principal
 
-O componente criado foi o `TccFeatureCard`, pensado para representar areas do sistema do TCC.
+O componente principal desta atividade e o `MonitoringCatalog`, pensado para representar o inventario de equipamentos do sistema de monitoramento residencial.
 
-Esse componente recebe props tipadas para:
+Esse catalogo trabalha com itens tipados contendo:
 
+- identificador unico;
+- nome do equipamento;
 - categoria;
-- titulo;
-- descricao;
-- lista de detalhes;
-- destaque visual opcional;
-- mensagem de alerta opcional;
-- exibicao condicional dos detalhes.
+- localizacao;
+- status.
 
-### Exemplo de comportamento
+### Comportamentos implementados
 
-- quando `isHighlighted` esta ativo, o card mostra a badge `Destaque`;
-- quando `alertMessage` existe, o card mostra um alerta em Bootstrap;
-- quando `showDetails` e `false`, o card troca a lista por uma mensagem condicional em JSX.
+- o catalogo inicia com 4 itens relevantes ao tema do TCC;
+- a lista e renderizada dinamicamente com `map()`;
+- a busca filtra os itens em tempo real enquanto o usuario digita;
+- novos itens podem ser adicionados pelo formulario;
+- a interface atualiza imediatamente apos qualquer mudanca de estado.
 
 ## Funcionalidades implementadas
 
 Foram aplicados conceitos praticos com React e TypeScript:
 
-- `useState` para categoria, tema e data atual;
+- `useState` para itens do catalogo, termo de busca, formulario, tema e data atual;
 - `useEffect` para atualizar a data e persistir o tema;
-- `useMemo` para filtrar os cards exibidos;
+- `useMemo` para filtrar os itens encontrados e tambem os cards de apoio;
 - `calculateRemainingDays()` para calcular os dias restantes ate a data final;
 - `formatFullDate()` para exibir a data atual formatada;
-- renderizacao condicional no componente de card.
+- renderizacao condicional para estado vazio da busca;
+- renderizacao dinamica com `map()` no catalogo e nos cards de referencia.
 
 ## Tecnologias utilizadas
 
@@ -122,6 +125,7 @@ Principais arquivos:
 - `index.html`: estrutura base da aplicacao;
 - `src/main.tsx`: ponto de entrada com `ReactDOM.createRoot`;
 - `src/App.tsx`: estrutura principal da pagina em React;
+- `src/components/MonitoringCatalog.tsx`: catalogo dinamico com busca e adicao de itens;
 - `src/components/TccFeatureCard.tsx`: componente reutilizavel com props tipadas;
 - `src/style.css`: estilos personalizados;
 - `src/assets/tcc-smart-home.svg`: imagem principal da interface;

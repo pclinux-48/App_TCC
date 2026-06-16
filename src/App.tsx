@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import heroIllustration from './assets/tcc-smart-home.svg'
+import { MonitoringCatalog, type MonitoringItem } from './components/MonitoringCatalog'
 import { TccFeatureCard } from './components/TccFeatureCard'
 
 type FeatureCategory = 'todos' | 'iot' | 'backend' | 'frontend'
@@ -24,10 +25,10 @@ const projectFeatures: ProjectFeature[] = [
     categoryLabel: 'IoT',
     title: 'Monitoramento em tempo real',
     description:
-      'Capta dados de sensores residenciais para acompanhar eventos de intrusao e condicoes do ambiente.',
-    details: ['Sensores de presenca e abertura', 'Leitura continua', 'Envio de status em tempo real'],
+      'Capta dados de sensores residenciais para acompanhar eventos de intrusão e condições do ambiente.',
+    details: ['Sensores de presença e abertura', 'Leitura contínua', 'Envio de status em tempo real'],
     isHighlighted: true,
-    alertMessage: 'Modulo central para detectar eventos de seguranca no projeto.',
+    alertMessage: 'Módulo central para detectar eventos de segurança no projeto.',
   },
   {
     id: 2,
@@ -35,8 +36,8 @@ const projectFeatures: ProjectFeature[] = [
     categoryLabel: 'Backend',
     title: 'Central de alertas e eventos',
     description:
-      'Organiza notificacoes, registra ocorrencias e permite acompanhar o historico de atividades do sistema.',
-    details: ['Registro de logs', 'API para comunicacao', 'Alertas para situacoes criticas'],
+      'Organiza notificações, registra ocorrências e permite acompanhar o histórico de atividades do sistema.',
+    details: ['Registro de logs', 'API para comunicação', 'Alertas para situações críticas'],
   },
   {
     id: 3,
@@ -44,25 +45,25 @@ const projectFeatures: ProjectFeature[] = [
     categoryLabel: 'Frontend',
     title: 'Painel web responsivo',
     description:
-      'Entrega uma interface simples para consulta de sensores, visualizacao de status e acompanhamento do projeto.',
-    details: ['Layout com Bootstrap', 'Visual adaptavel', 'Navegacao por secoes'],
+      'Entrega uma interface simples para consulta de sensores, visualização de status e acompanhamento do projeto.',
+    details: ['Layout com Bootstrap', 'Visual adaptável', 'Navegação por seções'],
     isHighlighted: true,
-    alertMessage: 'Exemplo de componente React reutilizavel para o seu TCC.',
+    alertMessage: 'Exemplo de componente React reutilizável para o seu TCC.',
   },
   {
     id: 4,
     category: 'iot',
     categoryLabel: 'IoT',
-    title: 'Integracao com dispositivos acessiveis',
+    title: 'Integração com dispositivos acessíveis',
     description:
-      'Propoe uma arquitetura de baixo custo para ampliar o acesso a automacao residencial e seguranca domestica.',
-    details: ['Uso de microcontroladores', 'Baixo custo de implantacao', 'Facil expansao do sistema'],
+      'Propõe uma arquitetura de baixo custo para ampliar o acesso à automação residencial e segurança doméstica.',
+    details: ['Uso de microcontroladores', 'Baixo custo de implantação', 'Fácil expansão do sistema'],
   },
   {
     id: 5,
     category: 'backend',
     categoryLabel: 'Backend',
-    title: 'Protocolos web para comunicacao',
+    title: 'Protocolos web para comunicação',
     description:
       'Aplica protocolos web para interligar sensores, servidor e painel, favorecendo interoperabilidade.',
     details: ['HTTP e APIs REST', 'Troca padronizada de dados', 'Base para escalabilidade futura'],
@@ -71,12 +72,43 @@ const projectFeatures: ProjectFeature[] = [
     id: 6,
     category: 'frontend',
     categoryLabel: 'Frontend',
-    title: 'Modulo em definicao',
+    title: 'Módulo em definição',
     description:
-      'Reserva espaco para uma funcionalidade que ainda esta em estudo, sem impedir a apresentacao da ideia central.',
+      'Reserva espaço para uma funcionalidade que ainda está em estudo, sem impedir a apresentação da ideia central.',
     details: [],
     showDetails: false,
-    alertMessage: 'Mensagem exibida por renderizacao condicional quando o modulo ainda nao esta detalhado.',
+    alertMessage: 'Mensagem exibida por renderização condicional quando o módulo ainda não está detalhado.',
+  },
+]
+
+const initialMonitoringItems: MonitoringItem[] = [
+  {
+    id: 'sensor-porta-principal',
+    name: 'Sensor de porta principal',
+    category: 'Sensor',
+    location: 'Entrada principal',
+    status: 'Ativo',
+  },
+  {
+    id: 'camera-garagem',
+    name: 'Câmera da garagem',
+    category: 'Câmera',
+    location: 'Garagem',
+    status: 'Ativo',
+  },
+  {
+    id: 'alarme-corredor',
+    name: 'Alarme do corredor',
+    category: 'Alarme',
+    location: 'Corredor interno',
+    status: 'Manutenção',
+  },
+  {
+    id: 'gateway-sala-tecnica',
+    name: 'Gateway central',
+    category: 'Gateway',
+    location: 'Sala técnica',
+    status: 'Planejado',
   },
 ]
 
@@ -155,7 +187,7 @@ export default function App() {
             data-bs-target="#mainNavbar"
             aria-controls="mainNavbar"
             aria-expanded="false"
-            aria-label="Alternar navegacao"
+            aria-label="Alternar navegação"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -168,8 +200,8 @@ export default function App() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#componente">
-                  Componente
+                <a className="nav-link" href="#catalogo">
+                  Catálogo
                 </a>
               </li>
               <li className="nav-item">
@@ -187,16 +219,16 @@ export default function App() {
           <div className="container py-4">
             <div className="row align-items-center g-5">
               <div className="col-lg-6">
-                <span className="badge text-bg-primary mb-3">Atividade com React, TypeScript e Bootstrap</span>
-                <h1 className="display-5 fw-bold mb-3">Painel inicial do TCC de automacao residencial com IoT</h1>
+                <span className="badge text-bg-primary mb-3">Catálogo dinâmico com React, TypeScript e Bootstrap</span>
+                <h1 className="display-5 fw-bold mb-3">Inventário interativo para o sistema de monitoramento do TCC</h1>
                 <p className="lead text-secondary mb-4">
-                  Este app agora usa React com TypeScript para exibir um componente funcional e reutilizavel alinhado
-                  ao tema do seu TCC.
+                  Esta versão do projeto simula o gerenciamento de sensores e equipamentos da residência inteligente,
+                  com busca em tempo real, atualização de estado e cadastro dinâmico de novos itens.
                 </p>
 
                 <div className="d-flex flex-wrap gap-3 mb-4">
-                  <a className="btn btn-primary btn-lg" href="#componente">
-                    Ver componente
+                  <a className="btn btn-primary btn-lg" href="#catalogo">
+                    Ver catálogo
                   </a>
                   <button
                     id="theme-toggle"
@@ -228,7 +260,7 @@ export default function App() {
                 <div className="hero-image-wrapper p-3 p-lg-4 rounded-4 shadow-sm">
                   <img
                     src={heroIllustration}
-                    alt="Ilustracao de uma casa conectada com sensores, seguranca e integracao IoT"
+                    alt="Ilustração de uma casa conectada com sensores, segurança e integração IoT"
                     className="img-fluid w-100"
                   />
                 </div>
@@ -243,14 +275,14 @@ export default function App() {
               <div className="col-lg-7">
                 <div className="card border-0 shadow-sm h-100">
                   <div className="card-body p-4 p-lg-5">
-                    <h2 className="h1 mb-3">Sobre o componente</h2>
+                    <h2 className="h1 mb-3">Sobre a atividade</h2>
                     <p className="text-secondary mb-3">
-                      O componente principal desta atividade exibe cards de modulos do projeto com props tipadas,
-                      layout em Bootstrap e comportamento condicional.
+                      A interface agora evolui de uma tela estática para um catálogo interativo de dispositivos de
+                      monitoramento, pensado para representar uma funcionalidade central do TCC.
                     </p>
                     <p className="text-secondary mb-0">
-                      Isso permite reaproveitar a mesma estrutura para diferentes areas do sistema, como IoT, backend e
-                      frontend, sem repetir marcacao manual.
+                      O usuário pode pesquisar equipamentos em tempo real, visualizar a lista renderizada com `map()`
+                      e adicionar novos itens para simular a operação do sistema.
                     </p>
                   </div>
                 </div>
@@ -259,12 +291,12 @@ export default function App() {
               <div className="col-lg-5">
                 <div className="card border-0 shadow-sm h-100">
                   <div className="card-body p-4 p-lg-5">
-                    <h2 className="h4 mb-3">Informacoes do projeto</h2>
+                    <h2 className="h4 mb-3">Informações do projeto</h2>
                     <ul className="mb-0 ps-3">
                       <li className="mb-2">Data atual: {formatFullDate(currentDate)}</li>
-                      <li className="mb-2">Curso: Pos-Graduacao em Desenvolvimento Web e Mobile</li>
-                      <li className="mb-2">Tema: automacao residencial com monitoramento e intrusao</li>
-                      <li className="mb-0">Foco: praticar JSX, props e Bootstrap de forma clara</li>
+                      <li className="mb-2">Curso: Pós-Graduação em Desenvolvimento Web e Mobile</li>
+                      <li className="mb-2">Tema: automação residencial com monitoramento e intrusão</li>
+                      <li className="mb-0">Foco: praticar listas dinâmicas, busca e gerenciamento de estado</li>
                     </ul>
                   </div>
                 </div>
@@ -277,9 +309,9 @@ export default function App() {
           <div className="container">
             <div className="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-4">
               <div>
-                <h2 className="h1 mb-2">Componente reutilizavel do sistema</h2>
+                <h2 className="h1 mb-2">Módulos de referência do sistema</h2>
                 <p className="text-secondary mb-0">
-                  Selecione uma categoria para reutilizar o mesmo componente em contextos diferentes do seu TCC.
+                  Estes cards continuam resumindo os blocos principais do projeto e ajudam a contextualizar o catálogo.
                 </p>
               </div>
 
@@ -337,6 +369,20 @@ export default function App() {
           </div>
         </section>
 
+        <section id="catalogo" className="py-5 section-soft">
+          <div className="container">
+            <div className="mb-4">
+              <h2 className="h1 mb-2">Catálogo dinâmico de dispositivos</h2>
+              <p className="text-secondary mb-0">
+                O catálogo abaixo usa `useState` para controlar os itens e o termo de busca, com atualização imediata
+                na interface sempre que o usuário pesquisa ou adiciona um novo equipamento.
+              </p>
+            </div>
+
+            <MonitoringCatalog initialItems={initialMonitoringItems} />
+          </div>
+        </section>
+
         <section id="tecnologias" className="py-5 section-soft">
           <div className="container">
             <div className="row g-4">
@@ -345,7 +391,7 @@ export default function App() {
                   <div className="card-body p-4">
                     <h2 className="h4">React com TypeScript</h2>
                     <p className="text-secondary mb-0">
-                      Estrutura em JSX, componente funcional, props tipadas e organizacao em arquivos TSX.
+                      Estrutura em JSX, componente funcional, props tipadas e organização em arquivos TSX.
                     </p>
                   </div>
                 </div>
@@ -365,9 +411,9 @@ export default function App() {
               <div className="col-md-4">
                 <div className="card border-0 shadow-sm h-100">
                   <div className="card-body p-4">
-                    <h2 className="h4">Renderizacao condicional</h2>
+                    <h2 className="h4">Renderização condicional</h2>
                     <p className="text-secondary mb-0">
-                      O componente exibe alerta e lista de detalhes somente quando as props correspondentes estao
+                      O componente exibe alerta e lista de detalhes somente quando as props correspondentes estão
                       ativas.
                     </p>
                   </div>
@@ -381,7 +427,7 @@ export default function App() {
       <footer className="py-4 text-bg-dark">
         <div className="container text-center">
           <p className="mb-1 fw-semibold">Paulo Cesar Pereira</p>
-          <p className="mb-0">Pos-graduando em Desenvolvimento Web & Mobile</p>
+          <p className="mb-0">Pós-graduando em Desenvolvimento Web & Mobile</p>
         </div>
       </footer>
     </>

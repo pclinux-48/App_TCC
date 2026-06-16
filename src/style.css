@@ -76,6 +76,40 @@ body {
   box-shadow: 0 1rem 2.2rem rgba(0, 0, 0, 0.28);
 }
 
+.catalog-search-wrapper {
+  width: min(100%, 24rem);
+}
+
+.catalog-summary-box {
+  background-color: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+[data-bs-theme='dark'] .catalog-summary-box {
+  background-color: rgba(30, 41, 59, 0.78);
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+.catalog-item-card {
+  background-color: rgba(255, 255, 255, 0.88);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.catalog-item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.1);
+}
+
+[data-bs-theme='dark'] .catalog-item-card {
+  background-color: rgba(30, 41, 59, 0.92);
+}
+
+[data-bs-theme='dark'] .catalog-item-card:hover {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.28);
+}
+
 footer p,
 footer a {
   font-size: 0.98rem;
